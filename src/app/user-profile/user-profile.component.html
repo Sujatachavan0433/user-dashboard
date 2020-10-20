@@ -1,0 +1,57 @@
+<app-header [transparent]="false"></app-header>
+<div id="profileSection" class="row">
+  <div class="col-4">
+    <div id="profileImage">
+      <img
+        [src]="sanitizer.bypassSecurityTrustResourceUrl(userObj.profilePic) || 'https://image.flaticon.com/icons/png/512/64/64096.png'"
+        alt="">
+      <span *ngIf="profilePicError==true">Image size should be 310*325</span>
+      <div id="buttonSection">
+        <button class="btn btn-primary profileBtn" type="file" (click)="fileInput.click()">Edit photo</button>
+        <button class="btn btn-primary profileBtn" (click)="openModal()">Edit profile</button>
+        <span id="fileInput">
+          <input type="file" #fileInput accept="image/*" (change)="changeProfilePic($event)" />
+        </span>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-offset-1 col-7">
+    <h2 style="color: cornflowerblue;"> Welcome {{userObj.firstName}} {{userObj.lastName}} </h2>
+    <hr style="border: 1px solid gray;opacity: 0.6;">
+
+    <div class="card">
+      <div class="header">
+        <h5> User Profile</h5>
+      </div>
+      <div class="body">
+        <ul>
+          <li><b>Age:</b> {{userObj.age}}</li>
+          <li><b>Mobile: </b>{{userObj.mobile}}</li>
+          <li><b>Email:</b> {{userObj.email}}</li>
+          <li><b>Gender:</b> {{userObj.gender}}</li>
+          <li><b>Address: </b>{{userObj.address}}</li>
+        </ul>
+
+      </div>
+    </div>
+    <hr style="border: 1px solid gray;opacity: 0.6;">
+    <div class="card-footer">
+      <!-- Google Map -->
+      <agm-map style="height: 300px;" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]='true'
+        [mapTypeControl]='true' [usePanning]='true'>
+
+        <agm-marker [latitude]="lat" [longitude]="lng">
+          <agm-info-window #infoWindow>
+            <strong style="font-style: italic;">{{userObj.address}}</strong>
+          </agm-info-window>
+        </agm-marker>
+
+      </agm-map>
+    </div>
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>

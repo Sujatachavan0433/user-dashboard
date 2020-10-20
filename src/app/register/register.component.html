@@ -1,0 +1,136 @@
+<div class="modal-header">
+  <h6 class="modal-title" id="modal-basic-title">Register</h6>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close(null)">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <!-- <input [(ngModel)]="user.name" type="text">
+  <input [(ngModel)]="user.age" type="number"> -->
+  <div class="row">
+    <div class="col-4">
+      <div id="profileImage" *ngIf="registerForm && registerForm.value">
+        <img *ngIf="registerForm.value.profilePic!=undefined"
+          [src]="sanitizer.bypassSecurityTrustResourceUrl(registerForm.value.profilePic)" alt="">
+        <img *ngIf="registerForm.value.profilePic==undefined"
+          [src]="'https://image.flaticon.com/icons/png/512/64/64096.png'" alt="">
+        <span *ngIf="profilePicError==true">Image size should be 310*325</span>
+        <button id="imagePicker" type="file" (click)="fileInput.click()">upload your photo</button>
+        <span id="fileInput">
+          <input type="file" #fileInput accept="image/*" (change)="changeProfilePic($event)" />
+        </span>
+      </div>
+    </div>
+    <div class="col-offset-1 col-7">
+      <form [formGroup]="registerForm" #ngForm="ngForm">
+        <div class="row form-group">
+          <div class="col">
+            <input autocomplete="off" type="text" pattern="^[A-Za-z]+$" formControlName="firstName" class="form-control"
+              id="firstNameInput" placeholder="First name">
+            <div class="alert" *ngIf="ngForm.submitted || registerForm.controls['firstName'].touched">
+              <div [hidden]="!registerForm.controls['firstName'].hasError('required')">
+                first name is Required
+              </div>
+              <div [hidden]="!registerForm.controls['firstName'].hasError('pattern')">
+                Only Alphabts are allowed
+              </div>
+
+              <div [hidden]="!registerForm.controls['firstName'].hasError('maxlength')">
+                First Name can't be more than 20 characters
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <input autocomplete="off" type="text" pattern="^[A-Za-z]+$" formControlName="lastName" class="form-control"
+              id="lastNameInput" placeholder="Last name">
+            <div class="alert" *ngIf="ngForm.submitted || registerForm.controls['lastName'].touched">
+              <div [hidden]="!registerForm.controls['lastName'].hasError('required')">
+                Last name is Required
+              </div>
+              <div [hidden]="!registerForm.controls['lastName'].hasError('pattern')">
+                Only Alphabts are allowed
+              </div>
+
+              <div [hidden]="!registerForm.controls['lastName'].hasError('maxlength')">
+                Lat Name can't be more than 20 characters
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <input autocomplete="off" type="email" formControlName="email" class="form-control" id="emailInput"
+            placeholder="Email">
+          <div class="alert" *ngIf="ngForm.submitted || registerForm.controls['email'].touched">
+            <div [hidden]="!registerForm.controls['email'].hasError('required')">
+              email is Required
+            </div>
+            <div [hidden]="!registerForm.controls['email'].hasError('pattern')">
+              Please enter valid email
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <input autocomplete="off" type="text" min="10" max="10" formControlName="mobile" class="form-control"
+            id="mobileInput" placeholder="eg. 8805307433">
+          <div class="alert" *ngIf="ngForm.submitted || registerForm.controls['mobile'].touched">
+            <div [hidden]="!registerForm.controls['mobile'].hasError('required')">
+              Mobile is Required
+            </div>
+            <div [hidden]="!registerForm.controls['mobile'].hasError('pattern')">
+              Only numbers are allowed
+            </div>
+
+            <div [hidden]="!registerForm.controls['mobile'].hasError('maxlength')">
+              Mobile can't be more than 10 digits
+            </div>
+
+            <div [hidden]="!registerForm.controls['mobile'].hasError('minlength')">
+              Mobile can't be less than 10 digits
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <ng5-slider formControlName="age" [options]="options"></ng5-slider>
+        </div>
+
+        <div class="form-group">
+          <input autocomplete="off" type="text" formControlName="lat" class="form-control" id="lat" placeholder="lat"
+            readonly>
+        </div>
+        <div class="form-group">
+          <input autocomplete="off" type="text" formControlName="long" class="form-control" id="long" placeholder="long"
+            readonly>
+        </div>
+        <div class="form-group">
+          <textarea type="text" formControlName="address" class="form-control" id="address" rows="5"
+            placeholder="address" readonly></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Gender</label>
+          <div class="form-conrol">
+            Female : <input type="radio" formControlName="gender" id="gender" value="Female"><br />
+            Male : <input type="radio" formControlName="gender" id="gender" value="Male">
+          </div>
+        </div>
+
+        <!-- Google Map -->
+        <agm-map style="height: 300px;" [latitude]="lat" [longitude]="lng" style="display: none;">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+
+        <br />
+
+        <div class="form-group" id="buttonSection">
+          <button class="btn btn-secondary" aria-label="Close" (click)="activeModal.close(null)">Cancel</button>
+          <button id="submit" name="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

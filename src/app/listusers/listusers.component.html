@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h6 class="modal-title" id="modal-basic-title">Users</h6>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close(null)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+<div class="row">
+    <div class="col-md-6">
+      <table class="table" border="1">
+        <thead>
+          <th>Name</th>
+          <th>mobile</th>
+          <th>email</th>
+          <th>age</th>
+          <th>gender</th>
+          <th>address</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of data">
+            <td><a (click)="RedirectToProfile(m)">{{m.firstName}} {{m.lastName}}</a></td>
+            <td>{{m.mobile}}</td>
+            <td>{{m.email}}</td>
+            <td>{{m.age}}</td>
+            <td>{{m.gender}}</td>
+            <td>{{m.address}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+</div>

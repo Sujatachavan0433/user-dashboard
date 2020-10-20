@@ -1,0 +1,93 @@
+#profileImage {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    img {
+
+        height: 100px;
+        width: 100px;
+    }
+
+    #imagePicker {
+        background: transparent;
+        color: #0e78fa;
+        margin-top: 1rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    #fileInput {
+        visibility: hidden;
+        position: absolute;
+        overflow: hidden;
+        width: 0px;
+        height: 0px;
+        border: none;
+        margin: 0;
+        padding: 0
+    }
+
+    span {
+        font-size: 0.8rem;
+        color: red;
+    }
+}
+
+#cancel {
+    background: #fff !important;
+    border: 1px solid #dfdfdf !important;
+    color: #000;
+    margin-right: 1rem;
+}
+
+#buttonSection {
+    float: right;
+}
+
+
+.form-control {
+    padding: 0 0.3rem !important;
+    height: 35px !important;
+
+}
+
+#tagList {
+    width: 100%;
+
+    // border: 1px solid;
+    .tags {
+        min-width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100px;
+        padding: 0 0.5rem;
+        background: #888484;
+        text-align: left;
+        margin: 0.5rem;
+        float: left;
+        
+
+        p {
+            margin-bottom: 0;
+            margin-top: 0;
+            color: #fff;
+            cursor: pointer;
+            i{
+                color: #ffeb3b;
+            }
+        }
+    }
+}
+#newsLetter{
+    display: block;
+        float: left;
+        width: 100%;
+}
+
+agm-map {
+    height: 300px;
+  }

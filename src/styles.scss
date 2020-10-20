@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+.alert {
+	color: #ff0000c9;
+	padding-bottom: 0 !important;
+	padding-top: 0.5rem !important;
+	background: none;
+	// padding-left: 29px;
+    margin-bottom: none !important;
+    font-size: 0.8rem;
+}
+
+.alert.m-alert--outline.alert-danger {
+	color: #575962;
+	/* background-color: #fff; */
+	border-color: #f4516c;
+	color: #f0f0f0;
+	background: none; // color: none;
+	padding: 12px;
+	width: 80%;
+	margin: auto;
+	font-weight: 400;
+}
+
+
+// @import "~ag-grid-community/dist/styles/ag-grid.css";
+// @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
